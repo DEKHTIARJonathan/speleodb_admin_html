@@ -1,0 +1,39 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.245.2/containers/docker-existing-dockerfile
+{
+    "name": "SpeleoDB HTML Development Container",
+    "build": {
+        "context": "..",
+        "dockerfile": "Dockerfile"
+    },
+    "workspaceFolder": "/workspaces/speleodb_html",
+    "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/speleodb_html,type=bind",
+    // Automatically expose port 8080 (mapped to container's port 80, nginx's default) for development
+    "appPort": "8080:80",
+    // Make sure our nginx container's default command runs, which starts up the web server in the background.
+    "overrideCommand": false,
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                // HTML / CSS
+                "ecmel.vscode-html-css",
+                // CSS Intellisense
+                "bradlc.vscode-tailwindcss",
+                // JS
+                "mgmcdermott.vscode-language-babel"
+            ]
+        }
+    },
+    // "features": {
+    //     "ghcr.io/devcontainers/features/common-utils:2": {
+    //         "username": "speleodb",
+    //         "installZsh": true,
+    //         "installOhMyZsh": true,
+    //         "configureZshAsDefaultShell": false,
+    //         "upgradePackages": false
+    //     },
+    //     "ghcr.io/devcontainers/features/git:1": {
+    //         "version": "latest"
+    //     }
+    // }
+}
